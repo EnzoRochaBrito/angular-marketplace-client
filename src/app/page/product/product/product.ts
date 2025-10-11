@@ -5,10 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SelectAmount } from '../../../widget/select-amount/select-amount';
 import { Dropdown } from '../../../widget/dropdown/dropdown';
 import { ProductCard } from '../../../widget/product-card/product-card';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product',
-  imports: [StandartPage, ProductImageCarousel, ReactiveFormsModule, SelectAmount, Dropdown, ProductCard],
+  imports: [StandartPage, ProductImageCarousel, ReactiveFormsModule, SelectAmount, Dropdown, ProductCard, RouterLink],
   templateUrl: './product.html',
   styleUrl: './product.css'
 })
