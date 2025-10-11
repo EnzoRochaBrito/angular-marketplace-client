@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+.product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.title-container {
+    @apply border-b-emerald-600 border-b-3 py-3 mb-3;
+}

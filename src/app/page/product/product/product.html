@@ -1,0 +1,68 @@
+<standart-page>
+
+    <div class="product flex flex-col md:flex-row p-2 gap-2 mb-3">
+        <div class="carousel-wrapper flex-none md:flex-3 basis-0">
+            <product-image-carousel
+            [urls]="urls"
+            ></product-image-carousel>
+        </div>
+        <div class="product-info flex-none md:flex-4 basis-0">
+            
+            <div class="mb-3">
+                <h1 class="product-name text-2xl font-medium text-gray-600">
+                    Notebook Dell Inspiron I14-I150U-M50 14" FHD+ Intel® Core™ 7 150U 16GB 512GB SSD Windows 11 Prata Gelo
+                </h1>
+                <h5 class="store-name text-sm">
+                    Vendido por: <span class="text-blue-400 cursor-pointer hover:text-blue-700 transition-colors">Loja</span>
+                </h5>
+            </div>
+            <div class="mb-3">
+                <h1 class="price text-3xl">
+                    R$ 999.99
+                </h1>
+            </div>
+            <div class="">
+                <div class="flex flex-row items-center gap-2 mb-3 ">
+                    <p class="text-gray-600 text-sm">Quantidade</p>
+                    <select-amount></select-amount>
+                </div>
+                <div class="buttons flex flex-row gap-4">
+                    <button class="w-47 h-12 text-emerald-700 border border-emerald-700 bg-emerald-50 hover:bg-emerald-100 transition-colors cursor-pointer">
+                        Adicionar ao Carrinho
+                    </button>
+                    <button class="w-47 h-12 text-emerald-50 bg-emerald-700 border border-emerald-700 hover:bg-emerald-900 transition-colors cursor-pointer">
+                        Comprar agora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="description px-2 md:px-0">
+        <dropdown title="DESCRIÇÃO DO PRODUTO">
+            <p class="text-justify">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat debitis alias a voluptatibus ex magnam quis doloremque, quasi tempore, quod dolores minima voluptates voluptatem recusandae ad cum molestiae, officiis tenetur?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat debitis alias a voluptatibus ex magnam quis doloremque, quasi tempore, quod dolores minima voluptates voluptatem recusandae ad cum molestiae, officiis tenetur?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat debitis alias a voluptatibus ex magnam quis doloremque, quasi tempore, quod dolores minima voluptates voluptatem recusandae ad cum molestiae, officiis tenetur?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat debitis alias a voluptatibus ex magnam quis doloremque, quasi tempore, quod dolores minima voluptates voluptatem recusandae ad cum molestiae, officiis tenetur?
+            </p>
+        </dropdown>
+    </div>
+    <div class="bg-gradient-to-r from-emerald-800 to-emerald-300 w-full h-px my-3"></div>
+    <h1 class="text-sm font-medium text-gray-600 mb-2">VOCÊ TAMBÉM PODE GOSTAR</h1>
+    <div class="product-grid product-grid grid gap-2">
+        <product-card
+        [id]="'123123123123'"
+        [image]="product.image"
+        [name]="product.name"
+        [price]="product.price"
+        ></product-card>
+        <product-card
+        [id]="'123123123123'"
+        [image]="product.image"
+        [name]="product.name"
+        [price]="product.price"
+        ></product-card>
+    </div>
+
+
+</standart-page>

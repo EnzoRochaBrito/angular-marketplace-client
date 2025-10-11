@@ -1,0 +1,20 @@
+<div class="carousel flex flex-col">
+    <div class="h-96 flex-1 relative">
+        <span class="absolute h-full w-2/5 bg-gradient-to-r from-gray-200 to-transparent opacity-0 hover:opacity-45 cursor-pointer transition-opacity top-0"
+        (click)="previousImage()"
+        ></span>
+        @for (url of urls; track id; let id = $index) {
+            <img [src]="url" class="h-96 object-cover" alt="" [ngClass]="{'block': currentImageId === id, 'hidden': currentImageId !== id}">
+        }
+        <span class="absolute h-full w-2/5 bg-gradient-to-l from-gray-200 to-transparent opacity-0 hover:opacity-45 cursor-pointer transition-opacity end-0 top-0"
+        (click)="nextImage()"
+        ></span>
+    </div>
+    <div class="other-images h-26 flex flex-row p-1 gap-1 overflow-x-auto flex-nowrap">
+        @for (url of urls; track id; let id = $index) {
+            <img [src]="url" loading="lazy" (click)="setImage(id)" class="max-h-full h-full aspect-square object-cover hover:brightness-110 transition cursor-pointer "
+            [ngClass]="{'border-2 border-emerald-500': currentImageId === id}"
+            >
+        }
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="select-amount">
+    <div class="inline-block w-7 decrease px-2 py-1 text-center outline-0 border-1 border-r-0 border-gray-300 cursor-pointer rounded-s-md select-none text-gray-600" (click)="descrease()">
+        -
+    </div>
+    <div class="inline-block product-quantity">
+        <input class="w-16 px-2 py-1 text-center outline-0 border-1 border-gray-300"
+        [formControl]="amount"
+        (focus)="setProductAmountControlState(true)"
+        (blur)="setProductAmountControlState(false)" type="number" name="" id="">
+    </div>
+    <div class="inline-block w-7 increment px-2 py-1 text-center outline-0 border-1 border-l-0 border-gray-300 cursor-pointer rounded-e-md select-none text-gray-600" (click)="increase()">
+        +
+    </div>
+</div>

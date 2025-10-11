@@ -1,0 +1,9 @@
+<div class="product-card flex flex-col border-1 border-gray-200 shadow-sm bg-white cursor-pointer" [routerLink]="['/product', id]">
+    <span class="product-image flex-6 basis-0 bg-amber-200 block">
+        <img loading="lazy" [src]="image" alt="" class="w-full h-full object-cover">
+    </span>
+    <div class="info p-1 relative flex-2 basis-0">
+        <p class="product-name text-sm break-words">{{name | maxStrLen:25 }}</p>
+        <p class="product-price text-sm text-emerald-800 absolute bottom-1.5 left-1.5">R$ {{price/100}}</p>
+    </div>
+</div>

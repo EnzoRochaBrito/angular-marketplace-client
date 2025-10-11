@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import "tailwindcss";
+@tailwind utilities;
+
+* {
+    font-family: "Noto Sans", sans-serif;
+}
+
+body {
+    background-color: #fafafa;
+}
+
+.center-content {
+    @apply lg:w-7xl lg:mx-auto max-w-full;
+}
+
+.middle {
+    @apply top-1/2 left-1/2 -translate-1/2;
+}
+
+.controller {
+    @apply outline-0 border rounded-sm px-2 py-1;
+}
+
+.btn {
+    @apply px-2 py-1.5 rounded-sm hover:brightness-105 active:brightness-95 transition-all cursor-pointer;
+}
+
+.btn-primary {
+    @apply bg-emerald-400 text-white;
+}
+
+.btn-primary-outline {
+    @apply border border-emerald-400 text-emerald-400;
+}
+
+.btn-disabled {
+    @apply bg-gray-400 text-white;
+}
+
+.btn-disabled-outline {
+    @apply border border-gray-400 text-gray-400;
+}

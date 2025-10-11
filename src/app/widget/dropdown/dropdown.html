@@ -1,0 +1,8 @@
+<div class="dropdown">
+    <div class="dropdown-title p-1 bg-gradient-to-b from-emerald-400 to-emerald-500 relative" (click)="toggle()">
+        <h1 class="text-xl font-medium text-white">{{title}}</h1>
+    </div>
+    <div class="content p-1 overflow-hidden transition-all border-0 md:border-2 border-emerald-500 border-t-0" [ngClass]="{'h-full': open, 'h-0': !open}">
+        <ng-content></ng-content>
+    </div>
+</div>

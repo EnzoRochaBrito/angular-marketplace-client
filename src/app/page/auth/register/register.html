@@ -1,0 +1,17 @@
+<auth-page title="Registro">
+    <span class="mb-2">
+        <auth-input inputName="Username" [control]="registerForm.controls.username" inputType="text" [errMsg]="registerFormErrMessages.username"></auth-input>
+    </span>
+    <span class="mb-2">
+        <auth-input inputName="Email" [control]="registerForm.controls.email" inputType="text" [errMsg]="registerFormErrMessages.email"></auth-input>
+    </span>
+    <span class="mb-2">
+        <auth-input inputName="Password" [control]="registerForm.controls.password" inputType="password" [errMsg]="registerFormErrMessages.password"></auth-input>
+    </span>
+    <button [disabled]="registerForm.invalid" [ngClass]="{'btn-disabled': registerForm.invalid, 'btn-primary': registerForm.valid}" class="btn w-full mt-4" (click)="submitRegistrationForm()">Registrar</button>
+    <span class="text-center">
+        <p class="text-sm mt-2">
+            Já possui uma conta? <a class="text-emerald-700" [routerLink]="['/login']">Faça login!</a>
+        </p>
+    </span>
+</auth-page>

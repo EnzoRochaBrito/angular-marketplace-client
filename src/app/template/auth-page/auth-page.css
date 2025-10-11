@@ -1,0 +1,3 @@
+.relative-main-h{
+    height: calc(100dvh - 68px);
+}
