@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ProfileRoutes } from './page/profile/profile.routes';
 
 export const routes: Routes = [
     {
@@ -20,5 +21,11 @@ export const routes: Routes = [
     {
         path: 'store/:id',
         loadComponent: () => import('./page/store/store/store').then(m => m.StorePage)
+    },
+    ProfileRoutes,
+    {
+        path: '**',
+        redirectTo: '',
+        pathMatch: 'full'
     }
 ];

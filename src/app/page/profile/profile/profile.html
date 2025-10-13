@@ -1,0 +1,20 @@
+<standart-page>
+
+    <div class="profile flex flex-col md:flex-row">
+        <div class="select md:w-40 p-2 flex gap-2 md:flex-col flex-row">
+            <div class="profile-page btn btn-primary-outline" [ngClass]="{'btn-primary-outline': !isRouteActive('/profile/cart'), 'btn-primary': isRouteActive('/profile/cart')}" [routerLink]="['/profile', 'cart']">
+                Cart
+            </div>
+            <div class="profile-page btn btn-primary-outline" [ngClass]="{'btn-primary-outline': !isRouteActive('/profile/history'), 'btn-primary': isRouteActive('/profile/history')}" [routerLink]="['/profile', 'history']">
+                History
+            </div>
+            <div class="profile-page btn btn-primary-outline" [ngClass]="{'btn-primary-outline': !isRouteActive('/profile/account'), 'btn-primary': isRouteActive('/profile/account')}" [routerLink]="['/profile', 'account']">
+                Account
+            </div>
+        </div>
+        <div class="content overflow-y-auto h-full w-full px-2 md:px-0">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</standart-page>
