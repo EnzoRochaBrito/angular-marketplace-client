@@ -4,6 +4,7 @@ import { CookieService } from '../../service/cookie/cookie';
 import { applicationTokens } from '../../utils/tokens';
 import { catchError, Observable, Subscription, switchMap, throwError } from 'rxjs';
 import { AuthService } from '../../service/auth/auth';
+import { Router } from '@angular/router';
 
 export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
   const cookieService = inject(CookieService)
@@ -30,7 +31,12 @@ export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
             })
             return next(newAuthReq)
           }),
-          catchError((refreshErr) => {
+          catchError((refreshErr: HttpErrorResponse) => {
+            if (refreshErr.status === 403) {
+              const router = inject(Router)
+              router.navigate(['/login'])
+              // logout locally
+            }
             console.error('Erro ao atualizar token:', refreshErr)
             return throwError(() => refreshErr)
           })
