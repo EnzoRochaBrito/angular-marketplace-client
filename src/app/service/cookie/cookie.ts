@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 export class CookieService {
 
   setCookie(key: string, val: string, seconds?: number): void {
-    document.cookie = `${key}=${val}; Path=/; Max-Age=${seconds}`
+    let cookie = `${key}=${val}; Path=/;`
+    if (seconds) cookie += ` Max-Age=${seconds}` // add expiration time
+    document.cookie = cookie
   }
 
   getCookie(key: string): string | void {

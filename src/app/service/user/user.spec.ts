@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CookieService } from './cookie';
+import { User } from './user';
 
-describe('CookieService', () => {
-  let service: CookieService;
+describe('User', () => {
+  let service: User;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CookieService);
+    service = TestBed.inject(User);
   });
 
   it('should be created', () => {

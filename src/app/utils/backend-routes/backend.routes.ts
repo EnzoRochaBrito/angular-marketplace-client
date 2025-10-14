@@ -10,6 +10,9 @@ export const server = {
         register:        apiUrl + `/auth/signin`,
         logout:          apiUrl + `/auth/logout`,
         refreshRotation: apiUrl + `/auth/refresh-rotation`,
+    },
+    user: {
+        base: apiUrl + `/user`,
     }
    }
 }

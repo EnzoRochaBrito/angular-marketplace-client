@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { LoginDto } from '../../../utils/types/auth.dto';
 import { Subscription } from 'rxjs';
 import { CookieService } from '../../../service/cookie/cookie';
+import { applicationTokens } from '../../../utils/tokens';
 
 @Component({
   selector: 'app-login',
@@ -48,7 +49,7 @@ export class LoginPage {
       next: (res) => {
         if (!res.body) return
         const acessToken = res.body.acessToken
-        this.cookieService.setCookie('acessToken', acessToken, 5 * 60 * 1000)
+        this.cookieService.setCookie(applicationTokens.jwt.ACCESS_TOKEN, acessToken, 5 * 60)
         this.router.navigate(['/'])
       },
       error: (err) => {
