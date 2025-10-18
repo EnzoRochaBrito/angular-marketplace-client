@@ -6,6 +6,9 @@ import { server } from '../../utils/backend-routes/backend.routes';
   providedIn: 'root'
 })
 export class UserService {
+
+  isLogged = signal<boolean>(false)
+
   constructor(private http: HttpClient) { }
 
   get() {
