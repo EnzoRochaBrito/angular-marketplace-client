@@ -1,0 +1,12 @@
+<standart-page>
+
+    <div class="form-wrapper flex justify-center p-2">
+        <div class="size md:w-2xl w-full">
+            <form [formGroup]="createStoreForm">
+                <custom-input [control]="createStoreForm.controls.name" [inputName]="'Nome da loja'" [errMsg]="createStoreFormErr.nameErr"></custom-input>
+                <button class="btn w-full mt-2" [disabled]="createStoreForm.invalid" [ngClass]="{'btn-primary': createStoreForm.valid, 'btn-disabled': createStoreForm.invalid}" (click)="createStore()">Criar loja</button>
+            </form>
+        </div>
+    </div>
+
+</standart-page>

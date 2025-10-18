@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthPage } from '../../../template/auth-page/auth-page';
 import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthInput } from '../../../widget/auth-input/auth-input';
+import { CustomInput } from '../../../widget/custom-input/custom-input';
 import { AuthService } from '../../../service/auth/auth';
 import { CommonModule } from '@angular/common';
 import { LoginDto } from '../../../utils/types/auth.dto';
@@ -12,7 +12,7 @@ import { applicationTokens } from '../../../utils/tokens';
 
 @Component({
   selector: 'app-login',
-  imports: [AuthPage, RouterLink, ReactiveFormsModule, AuthInput, CommonModule],
+  imports: [AuthPage, RouterLink, ReactiveFormsModule, CustomInput, CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })

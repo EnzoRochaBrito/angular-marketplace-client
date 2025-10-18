@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { AuthPage } from '../../../template/auth-page/auth-page';
 import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthInput } from '../../../widget/auth-input/auth-input';
+import { CustomInput } from '../../../widget/custom-input/custom-input';
 import { AuthService } from '../../../service/auth/auth';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ import { applicationTokens } from '../../../utils/tokens';
 
 @Component({
   selector: 'app-register',
-  imports: [AuthPage, RouterLink, AuthInput, CommonModule],
+  imports: [AuthPage, RouterLink, CustomInput, CommonModule],
   templateUrl: './register.html',
   styleUrl: './register.css'
 })

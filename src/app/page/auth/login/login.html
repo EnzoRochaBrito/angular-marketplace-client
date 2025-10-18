@@ -1,9 +1,9 @@
 <auth-page title="Login">
     <span class="mb-2">
-        <auth-input inputName="Email" [control]="loginForm.controls.email" inputType="text" [errMsg]="loginFormErrMessages.email"></auth-input>
+        <custom-input inputName="Email" [control]="loginForm.controls.email" inputType="text" [errMsg]="loginFormErrMessages.email"></custom-input>
     </span>
     <span class="mb-2">
-        <auth-input inputName="Password" [control]="loginForm.controls.password" inputType="password" [errMsg]="loginFormErrMessages.password"></auth-input>
+        <custom-input inputName="Password" [control]="loginForm.controls.password" inputType="password" [errMsg]="loginFormErrMessages.password"></custom-input>
     </span>
     <button [disabled]="loginForm.invalid" [ngClass]="{'btn-disabled': loginForm.invalid, 'btn-primary': loginForm.valid}" (click)="submitLoginForm()" class="btn btn-primary w-full mt-4">Logar</button>
     <span class="text-center">

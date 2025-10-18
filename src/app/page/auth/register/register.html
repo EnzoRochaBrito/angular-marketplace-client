@@ -1,12 +1,12 @@
 <auth-page title="Registro">
     <span class="mb-2">
-        <auth-input inputName="Username" [control]="registerForm.controls.username" inputType="text" [errMsg]="registerFormErrMessages.username"></auth-input>
+        <custom-input inputName="Username" [control]="registerForm.controls.username" inputType="text" [errMsg]="registerFormErrMessages.username"></custom-input>
     </span>
     <span class="mb-2">
-        <auth-input inputName="Email" [control]="registerForm.controls.email" inputType="text" [errMsg]="registerFormErrMessages.email"></auth-input>
+        <custom-input inputName="Email" [control]="registerForm.controls.email" inputType="text" [errMsg]="registerFormErrMessages.email"></custom-input>
     </span>
     <span class="mb-2">
-        <auth-input inputName="Password" [control]="registerForm.controls.password" inputType="password" [errMsg]="registerFormErrMessages.password"></auth-input>
+        <custom-input inputName="Password" [control]="registerForm.controls.password" inputType="password" [errMsg]="registerFormErrMessages.password"></custom-input>
     </span>
     <button [disabled]="registerForm.invalid" [ngClass]="{'btn-disabled': registerForm.invalid, 'btn-primary': registerForm.valid}" class="btn w-full mt-4" (click)="submitRegistrationForm()">Registrar</button>
     <span class="text-center">
