@@ -1,8 +1,10 @@
 import { Route } from "@angular/router";
+import { authGuardChild } from "../../guard/auth/auth-guard";
 
 export const ProfileRoutes: Route = {
     path: 'profile',
     loadComponent: () => import('./profile/profile').then(m => m.ProfilePage),
+    canActivateChild: [authGuardChild],
     children: [
         {
             path: 'history',
