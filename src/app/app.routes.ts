@@ -15,12 +15,16 @@ export const routes: Routes = [
         loadComponent: () => import('./page/auth/register/register').then(m => m.RegisterPage)
     },
     {
-        path: 'product/:id',
+        path: 'product/:productId',
         loadComponent: () => import('./page/product/product/product').then(m => m.ProductPage)
     },
     {
-        path: 'store/:id',
+        path: 'store/:storeId',
         loadComponent: () => import('./page/store/store/store').then(m => m.StorePage)
+    },
+    {
+        path: 'create-store',
+        loadComponent: () => import('./page/store/create-store/create-store').then(m => m.CreateStorePage)
     },
     ProfileRoutes,
     {
