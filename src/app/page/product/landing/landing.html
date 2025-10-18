@@ -5,18 +5,15 @@
                 <h1 class="text-3xl font-light text-emerald-700">Oferta do dia</h1>
             </div>
             <div class="product-grid product-grid grid gap-2">
-                <product-card
-                [id]="'123123123123'"
-                [image]="product.image"
-                [name]="product.name"
-                [price]="product.price"
-                ></product-card>
-                <product-card
-                [id]="'123123123123'"
-                [image]="product.image"
-                [name]="product.name"
-                [price]="product.price"
-                ></product-card>
+                @if (manyProducts) {
+                    @for (product of manyProducts; track $index) {
+                        <product-card
+                        [id]="product.id"
+                        [name]="product.name"
+                        [price]="product.price"
+                        ></product-card>
+                    }
+                }
             </div>
         </article>
     </div>
