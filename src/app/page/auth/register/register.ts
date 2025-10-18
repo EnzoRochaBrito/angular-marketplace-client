@@ -18,9 +18,7 @@ import { applicationTokens } from '../../../utils/tokens';
 })
 export class RegisterPage {
 
-  constructor(private authService: AuthService, private cookieService: CookieService, private router: Router) {}
-
-  registerSubscription!: Subscription;
+  constructor(private authService: AuthService) {}
 
   registerFormErrMessages = {
     username: {
@@ -51,21 +49,7 @@ export class RegisterPage {
       email: this.registerForm.controls.email.value!.toString(),
       password: this.registerForm.controls.password.value!.toString()
     }
-
-    this.registerSubscription = this.authService.register(dto).subscribe({
-      next: (res) => {
-        if (!res.body) return
-        const acessToken = res.body.acessToken
-        this.cookieService.setCookie(applicationTokens.jwt.ACCESS_TOKEN, acessToken, 5 * 60)
-        this.router.navigate(['/'])
-      },
-      error: (err) => {
-        console.log('error')
-        console.log(err)
-      },
-      complete: () => {
-        this.registerSubscription.unsubscribe()
-      },
-    })
+  
+    this.authService.register(dto)
   }
 }

@@ -18,9 +18,7 @@ import { applicationTokens } from '../../../utils/tokens';
 })
 export class LoginPage {
 
-  constructor(private authService: AuthService, private cookieService: CookieService, private router: Router) { }
-
-  loginSubscription!: Subscription;
+  constructor(private authService: AuthService) { }
 
   loginFormErrMessages = {
     email: {
@@ -45,21 +43,7 @@ export class LoginPage {
       password: this.loginForm.controls.password.value!
     }
 
-    this.loginSubscription = this.authService.login(dto).subscribe({
-      next: (res) => {
-        if (!res.body) return
-        const acessToken = res.body.acessToken
-        this.cookieService.setCookie(applicationTokens.jwt.ACCESS_TOKEN, acessToken, 5 * 60)
-        this.router.navigate(['/'])
-      },
-      error: (err) => {
-        console.log('error')
-        console.log(err)
-      },
-      complete: () => {
-        this.loginSubscription.unsubscribe()
-      },
-    })
+    this.authService.login(dto)
   }
 
 }
