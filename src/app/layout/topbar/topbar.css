@@ -1,0 +1,7 @@
+.spacer::before {
+    content: '● ';
+}
+
+.spacer:first-child::before {
+    content: '';
+}
