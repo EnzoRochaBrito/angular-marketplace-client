@@ -1,9 +1,0 @@
-<div class="input-name mb-1 flex flex-row align-text-bottom gap-2">
-    <p>{{inputName}}</p>
-    @if (errMsg && control.touched) {
-        <p class="err-msg text-red-400 text-sm">
-            {{ errMsg[errCode] }}
-        </p>
-    }
-</div>
-<input [formControl]="control" [type]="inputType" class="controller w-full">
