@@ -11,16 +11,18 @@
             (click)="nextImage()"
             ></span>
         } @else {
-            <div class="h-96 bg-gradient-to-b from-emerald-100 to-emerald-300 rounded-lg flex justify-center items-center">
-                <p class="font-semibold text-emerald-500/95 text-xl italic">Sem Imagem</p>
+            <div class="h-96 bg-gradient-to-b from-emerald-400 to-emerald-600 flex justify-center items-center">
+                <p class="text-emerald-50 text-4xl hover:opacity-80 transition-opacity">Sem Imagem</p>
             </div>
         }
     </div>
-    <div class="other-images h-26 flex flex-row p-1 gap-1 overflow-x-auto flex-nowrap">
-        @for (url of urls; track id; let id = $index) {
-            <img [src]="url" loading="lazy" (click)="setImage(id)" class="max-h-full h-full aspect-square object-cover hover:brightness-110 transition cursor-pointer "
-            [ngClass]="{'border-2 border-emerald-500': currentImageId === id}"
-            >
-        }
-    </div>
+    @if (urls) {
+        <div class="other-images h-26 flex flex-row p-1 gap-1 overflow-x-auto flex-nowrap">
+            @for (url of urls; track id; let id = $index) {
+                <img [src]="url" loading="lazy" (click)="setImage(id)" class="max-h-full h-full aspect-square object-cover hover:brightness-110 transition cursor-pointer "
+                [ngClass]="{'border-2 border-emerald-500': currentImageId === id}"
+                >
+            }
+        </div>
+    }
 </div>
