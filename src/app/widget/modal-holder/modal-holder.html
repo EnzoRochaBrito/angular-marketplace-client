@@ -1,0 +1,6 @@
+@if (modalService.show() && modalService.modalId() === modalId) {
+    <span (click)="modalService.toggle(modalId)" class="fixed top-0 start-0 end-0 bottom-0 bg-black/5 " style="z-index: 999999999;"></span>
+    <span class="fixed top-1/2 start-1/2 -translate-1/2 flex items-center justify-center" style="z-index: 9999999999;">
+        <ng-content></ng-content>
+    </span>
+}
