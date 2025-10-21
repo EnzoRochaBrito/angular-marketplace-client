@@ -8,6 +8,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './cart-icon.css'
 })
 export class CartIcon {
-@Input() cartId!: string
+@Input() id!: string
 @Input() name!: string
 }
