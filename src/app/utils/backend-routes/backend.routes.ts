@@ -21,6 +21,14 @@ export const server = {
         store: {
             base: apiUrl + `/store`,
             storeId: (id: string) => apiUrl + `/store/${id}`
+        },
+        cart: {
+            base: apiUrl + `/cart`,
+            cartId: (id: string) => ({
+                id: apiUrl + `/cart/${id}`,
+                product: apiUrl + `/cart/${id}/product`,
+            }),
+            cartProduct: (id: string) => apiUrl + `/cart/product/${id}`
         }
     }
 }
