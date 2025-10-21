@@ -15,7 +15,7 @@ export class CartService {
   /**
    * Checks if the service already requisited the server for the carts
    */
-  private userCartsFetched = signal<boolean>(false)
+  userCartsFetched = signal<boolean>(false)
 
   constructor(private http: HttpClient) { }
 
@@ -66,8 +66,8 @@ export class CartService {
 
   insertProductToCart(cartId: string, productId: string, amount: number) {
     const subscription = this.http.post(server.api.cart.cartId(cartId).product, {
-      productId: productId,
-      amount: amount
+      productId,
+      amount
     }, { observe: 'response' }).subscribe({
       next: (v) => {
         if (!v.body) return;

@@ -1,0 +1,19 @@
+<modal-holder modalId="select.cart">
+
+    <div class="modal relative">
+        <div class="top flex justify-between items-center mb-2">
+            <p class="text-emerald-500 text-lg">Selecione o carrinho</p>
+            <p class="close cursor-pointer inline px-1.5 hover:opacity-50 transition-opacity" (click)="modalService.close()">X</p>
+        </div>
+       <div class="small-cart-grid grid gap-1 max-h-96 overflow-y-auto">
+        @if (cartService.userCartsFetched()) {
+            @for(cart of cartService.getUserCarts(); track $index) {
+                <div (click)="emitSelectedCart(cart.id)" class="cart aspect-square flex items-center justify-center border-2 rounded cursor-pointer border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white transition-colors">
+                    <p>{{ cart.name }}</p>
+                </div>
+            }
+        }
+       </div>
+    </div>
+
+</modal-holder>

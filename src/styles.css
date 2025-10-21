@@ -46,3 +46,7 @@ body {
 .title-container {
     @apply border-b-emerald-600 border-b-3 py-3 mb-3;
 }
+
+.modal {
+    @apply w-dvw max-w-dvw md:w-4xl bg-white md:rounded p-2 max-h-4/5;
+}
