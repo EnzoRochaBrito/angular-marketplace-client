@@ -1,23 +1,14 @@
 <div class="items flex flex-col gap-2">
-    <cart-item
-    itemImage="https://m.media-amazon.com/images/I/81KRhLp0JGL._UF1000,1000_QL80_.jpg"
-    itemName="Notebook Dell Inspiron I14-I150U-M50 14 \\ FHD+ Intel® Core™ 7 150U 16GB 512GB SSD Windows 11 Prata Gelo"
-    [itemAmount]="2"
-    [itemPrice]="999"
-    >
-    </cart-item>
-    <cart-item
-    itemImage="https://m.media-amazon.com/images/I/81KRhLp0JGL._UF1000,1000_QL80_.jpg"
-    itemName="Notebook Dell Inspiron I14-I150U-M50 14 \\ FHD+ Intel® Core™ 7 150U 16GB 512GB SSD Windows 11 Prata Gelo"
-    [itemAmount]="2"
-    [itemPrice]="999"
-    >
-    </cart-item>
-    <cart-item
-    itemImage="https://m.media-amazon.com/images/I/81KRhLp0JGL._UF1000,1000_QL80_.jpg"
-    itemName="Notebook Dell Inspiron I14-I150U-M50 14 \\ FHD+ Intel® Core™ 7 150U 16GB 512GB SSD Windows 11 Prata Gelo"
-    [itemAmount]="2"
-    [itemPrice]="999"
-    >
-    </cart-item>
+    @if (cartItems) {
+        @for (cartItem of cartItems; track $index) {
+            <cart-item
+            itemImage="https://m.media-amazon.com/images/I/81KRhLp0JGL._UF1000,1000_QL80_.jpg"
+            [itemName]="cartItem.product.name"
+            [itemAmount]="cartItem.amount"
+            [itemPrice]="cartItem.product.price"
+            [cartItemId]="cartItem.id"
+            (deleteEvent)="removeItem($event)"
+            ></cart-item>
+        }
+    }
 </div>
