@@ -13,10 +13,10 @@
         <select-amount
         [negativeValue]="false"
         [initialValue]="itemAmount"
-        (outputAmount)="amount($event)"
+        (outputAmount)="updateAmount($event)"
         ></select-amount>
         <p class="total text-xl text-center w-40">
-            {{ totalPrice/100 }}
+            R$ {{ (totalPrice/100).toFixed(2) }}
         </p>
         <span class="delete" (click)="delete()">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer text-red-500 transition-transform hover:scale-105 active:scale-95">
