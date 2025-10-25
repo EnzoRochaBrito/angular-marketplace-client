@@ -12,13 +12,24 @@
                     {{ product.name }}
                 </h1>
                 <h5 class="store-name text-sm">
-                    Vendido por: <span class="text-blue-400 cursor-pointer hover:text-blue-700 transition-colors" [routerLink]="['/store',product.store.id]">{{ product.store.name }}</span>
+                    Vendido por: <span class="text-blue-400 cursor-pointer hover:text-blue-700 transition-colors" (click)="navigateToStore()">{{ product.store.name }}</span>
                 </h5>
             </div>
             <div class="mb-3">
                 <h1 class="price text-3xl">
                     R$ {{ product.price/100 }}
                 </h1>
+                <p class="available text-sm text-gray-600">
+                    @if (product.stock.amount > 1) {
+                        @if (product.stock.amount > MAX_PRODUCT_AMOUNT_SHOW) {
+                            {{ MAX_PRODUCT_AMOUNT_SHOW }}+ produtos disponíveis
+                        } @else {
+                            {{ product.stock.amount }} produtos disponíveis
+                        }
+                    } @else {
+                        {{ product.stock.amount }} produto disponível
+                    }
+                </p>
             </div>
             <div class="">
                 <div class="flex flex-row items-center gap-2 mb-3 ">

@@ -29,7 +29,6 @@ export class CartItemsPage implements OnInit {
       next: (v) => {
         if (!v.body) return;
         this.cartItems = v.body.cart
-        console.log(this.cartItems)
       },
       complete: () => {
         fetchCartItemsSubscription.unsubscribe()

@@ -11,6 +11,7 @@ import { emptyFetchProductById, FetchProductById, ManyProducts } from '../../../
 import { ModalService } from '../../../service/modal/modal';
 import { SelectCartModal } from './select-cart-modal/select-cart-modal';
 import { CartService } from '../../../service/cart/cart';
+import { Title } from '@angular/platform-browser';
 
 type ProductBuffer = {
   productId: string,
@@ -19,7 +20,7 @@ type ProductBuffer = {
 
 @Component({
   selector: 'app-product',
-  imports: [StandartPage, ProductImageCarousel, ReactiveFormsModule, SelectAmount, Dropdown, ProductCard, RouterLink, SelectCartModal],
+  imports: [StandartPage, ProductImageCarousel, ReactiveFormsModule, SelectAmount, Dropdown, ProductCard, SelectCartModal],
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
@@ -28,10 +29,19 @@ export class ProductPage implements OnInit {
   product: FetchProductById = emptyFetchProductById;
   recomendations!: ManyProducts;
   productBuffer!: ProductBuffer;
+  MAX_PRODUCT_AMOUNT_SHOW = 900;
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private modalService: ModalService, private cartService: CartService) {
+  constructor(
+    private productService: ProductService,
+    private activatedRoute: ActivatedRoute,
+    private modalService: ModalService,
+    private cartService: CartService,
+    private titleService: Title,
+    private router: Router
+  ) {
     this.productId = this.activatedRoute.snapshot.paramMap.get('productId')!
   }
+
 
   ngOnInit(): void {
     this.fetchProduct()
@@ -49,7 +59,8 @@ export class ProductPage implements OnInit {
           productId: this.productId,
           amount: 1
         }
-        console.log(this.productBuffer)
+
+       this.changePageTitleToProduct(this.product.name)
       },
       complete: () => {
         fetchProductSubscription.unsubscribe()
@@ -79,5 +90,13 @@ export class ProductPage implements OnInit {
 
   insertProductToCart(cartId: string) {
     this.cartService.insertProductToCart(cartId, this.productBuffer.productId, this.productBuffer.amount)
+  }
+
+  changePageTitleToProduct(productName: string) {
+    this.titleService.setTitle(productName)
+  }
+
+  navigateToStore() {
+    this.router.navigate(['/store', this.product.store.id], { queryParams: { store: this.product.store.name } })
   }
 }

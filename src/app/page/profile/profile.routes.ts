@@ -5,6 +5,7 @@ export const ProfileRoutes: Route = {
     path: 'profile',
     loadComponent: () => import('./profile/profile').then(m => m.ProfilePage),
     canActivateChild: [authGuardChild],
+    title: 'profile',
     children: [
         {
             path: 'history',
