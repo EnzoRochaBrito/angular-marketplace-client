@@ -1,17 +1,18 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { server } from '../../utils/backend-routes/backend.routes';
 import { AuthResponse, LoginDto, RegisterDto } from '../../utils/types/auth.dto';
 import { Router } from '@angular/router';
 import { CookieService } from '../cookie/cookie';
 import { applicationTokens } from '../../utils/tokens';
 import { UserService } from '../user/user';
+import { ReturnBuffer } from '../../utils/return-to';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router, private cookieService: CookieService, private userService: UserService) {}
+  constructor(private http: HttpClient, private router: Router, private cookieService: CookieService, private userService: UserService, private returnBuffer: ReturnBuffer) {}
 
   login(dto: LoginDto) {
     const loginSubscription = this.http.post<AuthResponse>(server.api.auth.login, dto, { observe: 'response', withCredentials: true }).subscribe({
@@ -20,7 +21,9 @@ export class AuthService {
         const acessToken = res.body.acessToken
         this.cookieService.setCookie(applicationTokens.jwt.ACCESS_TOKEN, acessToken, applicationTokens.jwt.ACCESS_TOKEN_EXPIRATION)
         this.userService.isLogged.set(true)
-        this.router.navigate(['/'])
+        const navigateTo = (this.returnBuffer.hasPath()) ? this.returnBuffer.getPath() : '/'
+        this.router.navigateByUrl(navigateTo)
+        this.returnBuffer.clearPath()
       },
       complete: () => {
         loginSubscription.unsubscribe()
@@ -35,7 +38,9 @@ export class AuthService {
         const acessToken = res.body.acessToken
         this.cookieService.setCookie(applicationTokens.jwt.ACCESS_TOKEN, acessToken, applicationTokens.jwt.ACCESS_TOKEN_EXPIRATION)
         this.userService.isLogged.set(true)
-        this.router.navigate(['/'])
+        const navigateTo = (this.returnBuffer.hasPath()) ? this.returnBuffer.getPath() : '/'
+        this.router.navigateByUrl(navigateTo)
+        this.returnBuffer.clearPath()
       },
       complete: () => {
         registerSubscription.unsubscribe()
