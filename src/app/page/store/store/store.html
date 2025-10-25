@@ -2,7 +2,12 @@
 
     <section class="store-info relative">
         <img src="https://cdn.wallpapersafari.com/78/57/QRJ83w.png" alt="" class="banner rounded-sm h-40 w-full object-cover">
-        <h1 class="store-name font-medium text-3xl text-white absolute bottom-5 start-5 z-10">{{ store.name }}</h1>
+        <h1 class="store-name font-medium text-3xl text-white absolute bottom-5 start-5 z-10">
+            <!-- Checking to prevent error -->
+            @if (store) {
+                {{ store.name }}
+            }
+        </h1>
         <span class="shadow absolute bottom-0 start-0 w-full h-1/2 bg-gradient-to-t from-black/60 to-transparent opacity-50 rounded-b-sm"></span>
     </section>
 
