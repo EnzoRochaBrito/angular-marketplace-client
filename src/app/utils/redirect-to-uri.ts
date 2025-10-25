@@ -24,11 +24,13 @@ export class RedirectToUri {
  */
 export class RedirectToUriDirective {
     @Input() redirectToUri!: string
-    constructor(private el: ElementRef, private router: Router) { }
+    @Input() queryParams!: {[name: string]: string}
+    constructor(private el: ElementRef, private router: Router) {
+    }
 
     @HostListener('click')
     redirectTo() {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate([this.redirectToUri])});
+          this.router.navigate([this.redirectToUri], {queryParams: this.queryParams})});
     }
 }
