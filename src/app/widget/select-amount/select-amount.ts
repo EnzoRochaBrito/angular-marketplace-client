@@ -15,7 +15,7 @@ export class SelectAmount implements OnInit, OnDestroy {
 @Input() maxValue!: number;
 @Output() outputAmount: EventEmitter<number> = new EventEmitter<number>();
 
-amount = new FormControl(1, [Validators.min(1)])
+amount = new FormControl(1)
 
 selectMinAmountSubscription!: Subscription;
 selectAmountFocused$ = new BehaviorSubject<boolean>(false);
@@ -27,7 +27,6 @@ setAmountControlState(focused: boolean) {
 }
 
 ngOnInit(): void {
-  if (this.initialValue) this.amount.setValue(this.initialValue);
   this.selectMinAmountSubscription = this.selectAmountFocused$.subscribe(v => {
     if (v) return;
     const selectProductAmount = this.amount.value
@@ -39,10 +38,17 @@ ngOnInit(): void {
   this.changeAmountSubscription = this.amount.valueChanges
     .pipe(debounceTime(500))
     .subscribe(v => {
-      if (v && v > 0) {
-        this.outputAmount.emit(v)
+      if (v) {
+        if (this.negativeValue) {
+          this.outputAmount.emit(v)
+        } else {
+          if (v >=0) {
+            this.outputAmount.emit(v)
+          }
+        }
       }
     })
+    if (this.initialValue) this.amount.setValue(this.initialValue);
 }
 
 ngOnDestroy(): void {

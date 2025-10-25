@@ -1,4 +1,4 @@
-<div class="product-card flex flex-col border-1 border-gray-200 shadow-sm bg-white cursor-pointer" [redirectToUri]="`/product/${id}`">
+<div class="product-card flex flex-col border-1 border-gray-200 shadow-sm bg-white cursor-pointer" [redirectToUri]="`/product/${id}`" [queryParams]="{ 'product': name }">
     <span class="product-image flex-6 basis-0 bg-gradient-to-br from-emerald-100 to-emerald-200 block">
         @if(image) {
             <img loading="lazy" [src]="image" alt="" class="w-full h-full object-cover">
